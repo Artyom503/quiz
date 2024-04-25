@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="vite.svg" />
+  <link rel="icon" href="favicon-16x16.png" type="image/x-icon">
+  <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
+  <link rel="icon" href="/assets/apple-touch-icon.png" type="image/x-icon">
+  <link rel="stylesheet" crossorigin="" href="/assets/style.css">
+  <title>Quiz</title>
+  <style>
+    @import"https://fonts.googleapis.com/css2?family=Encode+Sans+SC&family=Ruda:wght@400;900&display=swap";
+    @import"https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@900&display=swap";
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    .font1 {
+      font-family: Ruda, sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 24px;
+      text-align: center
+    }
+
+    .font2 {
+      font-family: Ruda, sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 18px
+    }
+
+    .font3 {
+      font-family: Encode Sans SC, sans-serif;
+      font-size: 23px;
+      font-weight: 900;
+      line-height: 23px;
+      color: #fff;
+      text-align: center;
+      letter-spacing: .08em
+    }
+
+    .font4 {
+      font-family: Ruda, sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 18px;
+      text-align: center
+    }
+
+    .font5 {
+      font-family: Encode Sans SC, sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 23px;
+      color: #fff;
+      text-align: center
+    }
+
+    body {
+      background-image: url(./flag-PhUjYM3o.png);
+      background-size: cover;
+      background-repeat: repeat
+    }
+
+    .container {
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center
+    }
+
+
+
+    .container__img {
+      margin: 0 auto;
+      align-items: center;
+      height: 300px;
+      display: flex
+    }
+
+    .container__quiz {
+      padding: 21px 0 41px;
+      display: flex;
+      flex-direction: column;
+      background: #f1f1f1;
+      width: 100%;
+      box-shadow: 0 0 4px 3px #00000082
+    }
+
+    .container__quiz__title {
+      text-align: center;
+      padding: 10px 30px
+    }
+
+    .container__quiz__title2 {
+      text-align: center;
+      padding: 14px 30px 0
+    }
+
+    .container__quiz__ul {
+      display: flex;
+      flex-direction: column;
+      padding: 5px 30px 0;
+      gap: 13px
+    }
+
+    .container__quiz__li {
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+      border-radius: 24px;
+      background: #d9d9d9
+    }
+
+    .container__quiz__button {
+      margin: 12px auto 0;
+      background: linear-gradient(0deg, #20a73e, #20a73e), linear-gradient(0deg, #f7f6f4, #f7f6f4);
+      width: 260px;
+      height: 71px;
+      border-radius: 14px;
+      box-shadow: 0 3px 3px #0000004f;
+      border: 2px solid rgba(247, 246, 244, 1)
+    }
+
+    .container__quiz__button.disabled {
+      background: linear-gradient(0deg, #48e66b, #4fe371), linear-gradient(0deg, #f7f6f4, #f7f6f4)
+    }
+
+    .container__quiz__a {
+      margin: 15px auto 0
+    }
+
+    .container__quiz__button2 {
+      background: linear-gradient(0deg, #2481cc, #2481cc), linear-gradient(0deg, #f7f6f4, #f7f6f4);
+      width: 260px;
+      height: 71px;
+      border-radius: 14px;
+      box-shadow: 0 3px 3px #0000004f;
+      border: 2px solid rgba(247, 246, 244, 1)
+    }
+
+    .container__quiz__button3 {
+      background: linear-gradient(0deg, #7a7a7a, #7a7a7a), linear-gradient(0deg, #f7f6f4, #f7f6f4);
+      width: 260px;
+      height: 71px;
+      border-radius: 14px;
+      box-shadow: 0 3px 3px #0000004f;
+      border: 2px solid rgba(247, 246, 244, 1)
+    }
+
+    li {
+      list-style-type: none
+    }
+
+    .progress {
+      width: 296px;
+      height: 26px;
+      margin: 40px auto 0;
+      border-radius: 35px;
+      background: #d9d9d9
+    }
+
+    .progress__inner1 {
+      height: 100%;
+      border-radius: 35px;
+      width: 80%;
+      transition: all .5s ease;
+      background: #454545;
+      animation: progressBarAnimation1 1s forwards;
+    }
+    @keyframes progressBarAnimation1 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 25%; /* Final width set to 50% */
+  }
+  
+}
+.progress__inner2 {
+      height: 100%;
+      border-radius: 35px;
+      width: 80%;
+      transition: all .5s ease;
+      background: #454545;
+      animation: progressBarAnimation2 1s forwards;
+    }
+    @keyframes progressBarAnimation2 {
+  from {
+    width: 25%;
+  }
+  to {
+    width: 50%; /* Final width set to 50% */
+  }
+  
+}
+.progress__inner3 {
+      height: 100%;
+      border-radius: 35px;
+      width: 80%;
+      transition: all .5s ease;
+      background: #454545;
+      animation: progressBarAnimation3 1s forwards;
+    }
+    @keyframes progressBarAnimation3 {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 75%; /* Final width set to 50% */
+  }
+  
+}
+.progress__inner4 {
+      height: 100%;
+      border-radius: 35px;
+      width: 80%;
+      transition: all .5s ease;
+      background: #454545;
+      animation: progressBarAnimation4 1s forwards;
+    }
+    @keyframes progressBarAnimation4 {
+  from {
+    width: 75%;
+  }
+  to {
+    width: 99%; /* Final width set to 50% */
+  }
+  
+}
+    
+
+    .progress:before,
+    .progress:after {
+      content: "";
+      display: block;
+      height: 50px;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%)
+    }
+
+    .img3 {
+      margin-left: -10px;
+      margin-top: 10px
+    }
+
+    .container__quiz__telegram {
+      margin: 20px auto 0;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .container__quiz__telegram_h2 {
+      margin-top: 5px
+    }
+
+    body {
+      background-image: url(./flag.png);
+      background-size: cover;
+      background-repeat: repeat
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question img {
+      width: 200px;
+      height: 150px;
+      margin-bottom: 10px;
+    }
+
+    .options {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+    }
+
+    .option input[type="radio"] {
+      display: none;
+    }
+
+    .option label {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .option .circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .option input[type="radio"]:checked+.circle {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .end-section {
+      display: none;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="container" id="question1">
+      <div class="container__img"><img src="pic1.png" class="img1" alt="image"></div>
+      <div class="container__quiz">
+        <h1 class="container__quiz__title font1">¿1Es usted ciudadano de México?</h1>
+        <ul class="container__quiz__ul font2">
+          <li class="container__quiz__li" onclick="selectOption(1, 1)">
+            <input type="radio" id="option1" name="question1" value="1" class="hidden-radio">
+            <label for="option1" class="circle"></label>
+            <span>Sí</span>
+          </li>
+          <li class="container__quiz__li" onclick="selectOption(2, 1)">
+            <input type="radio" id="option2" name="question1" value="2" class="hidden-radio">
+            <label for="option2" class="circle"></label>
+            <span>No</span>
+          </li>
+        </ul>
+        <div class="progress">
+          <div style="width: 25%;" class="progress__inner1"></div>
+        </div>
+        <button class="container__quiz__button font3 disabled" id="submitBtn1" onclick="submitQuiz(1)" disabled>ADELANTE</button>
+      </div>
+    </div>
+    <div class="container hidden" id="question2">
+      <div class="container__img"><img src="pic2.png" class="img1" alt="image"></div>
+      <div class="container__quiz">
+        <h1 class="container__quiz__title font1">¿2Es usted ciudadano de México?</h1>
+        <ul class="container__quiz__ul font2">
+          <li class="container__quiz__li" onclick="selectOption(3, 2)">
+            <input type="radio" id="option3" name="question2" value="1" class="hidden-radio">
+            <label for="option3" class="circle"></label>
+            <span>Sí</span>
+          </li>
+          <li class="container__quiz__li" onclick="selectOption(4, 2)">
+            <input type="radio" id="option4" name="question2" value="2" class="hidden-radio">
+            <label for="option4" class="circle"></label>
+            <span>No</span>
+          </li>
+        </ul>
+        <div class="progress">
+          <div style="width: 50%;" class="progress__inner2"></div>
+        </div>
+        <button class="container__quiz__button font3 disabled" id="submitBtn2" onclick="submitQuiz(2)" disabled>ADELANTE</button>
+      </div>
+    </div>
+    <div class="container hidden" id="question3">
+      <div class="container__img"><img src="pic3.png" class="img1" alt="image"></div>
+      <div class="container__quiz">
+        <h1 class="container__quiz__title font1">¿3Es usted ciudadano de México?</h1>
+        <ul class="container__quiz__ul font2">
+          <li class="container__quiz__li" onclick="selectOption(5, 3)">
+            <input type="radio" id="option5" name="question3" value="1" class="hidden-radio">
+            <label for="option5" class="circle"></label>
+            <span>Sí</span>
+          </li>
+          <li class="container__quiz__li" onclick="selectOption(6, 3)">
+            <input type="radio" id="option6" name="question3" value="2" class="hidden-radio">
+            <label for="option6" class="circle"></label>
+            <span>No</span>
+          </li>
+        </ul>
+        <div class="progress">
+          <div style="width: 75%;" class="progress__inner3"></div>
+        </div>
+        <button class="container__quiz__button font3 disabled" id="submitBtn3" onclick="submitQuiz(3)" disabled>ADELANTE</button>
+      </div>
+    </div>
+    <div class="container hidden" id="question4">
+      <div class="container__img"><img src="pic4.png" class="img1" alt="image"></div>
+      <div class="container__quiz">
+        <h1 class="container__quiz__title font1">¿4Es usted ciudadano de México?</h1>
+        <ul class="container__quiz__ul font2">
+          <li class="container__quiz__li" onclick="selectOption(7, 4)">
+            <input type="radio" id="option7" name="question4" value="1" class="hidden-radio">
+            <label for="option7" class="circle"></label>
+            <span>Sí</span>
+          </li>
+          <li class="container__quiz__li" onclick="selectOption(8, 4)">
+            <input type="radio" id="option8" name="question4" value="2" class="hidden-radio">
+            <label for="option8" class="circle"></label>
+            <span>No</span>
+          </li>
+        </ul>
+        <div class="progress">
+          <div style="width: 99%;" class="progress__inner4"></div>
+        </div>
+        <button class="container__quiz__button font3 disabled" id="submitBtn4" onclick="submitQuiz(4)"
+          disabled>FINALIZAR</button>
+      </div>
+    </div>
+    <!-- Ниже финальная страница со ссылками -->
+    <div class="container hidden" id="result">
+      <div class="container__img"><img src="pic6.png" class="img3" alt="image"></div>
+      <div class="container__quiz">
+        <h2 class="container__quiz__title2 font4">Basándonos en sus respuestas, hemos seleccionado la información sobre
+          arbitraje de divisas adecuada para usted. </h2>
+        <h2 class="container__quiz__title2 font4">Haga clic en el botón de abajo para continuar.</h2><a
+          href="https://t.me/+-QVQER0Xex40Yzhi" class="container__quiz__a"><button
+            class="container__quiz__button2 font3">ABRIR</button></a><a href="https://telegram.org/dl"
+          class="container__quiz__a"><button class="container__quiz__button3 font5">¿no hay telegram?
+            descargar</button></a><a class="container__quiz__telegram"><svg width="34" height="34" viewBox="0 0 34 34"
+            fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M17 34C26.3888 34 34 26.3888 34 17C34 7.61116 26.3888 0 17 0C7.61116 0 0 7.61116 0 17C0 26.3888 7.61116 34 17 34Z"
+              fill="#2481CC"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M7.0653 16.9259C12.2927 14.8194 15.7784 13.4306 17.5225 12.7597C22.5023 10.8439 23.5371 10.5111 24.2115 10.5001C24.3598 10.4977 24.6915 10.5317 24.9063 10.6929C25.0878 10.8291 25.1377 11.013 25.1616 11.1421C25.1854 11.2712 25.2152 11.5652 25.1915 11.795C24.9217 14.4175 23.754 20.7817 23.16 23.719C22.9086 24.9619 22.4101 25.2279 21.9309 25.2687C20.8896 25.3573 20.1025 24.7829 19.0939 24.1714C17.5157 23.2145 16.5612 22.773 15.0293 21.8393C13.2589 20.7602 14.8167 20.2556 15.8257 19.2863C16.0897 19.0327 20.6011 14.9766 20.5817 14.8546C20.5746 14.8103 20.4408 14.373 20.3359 14.2868C20.2311 14.2006 20.0763 14.2301 19.9646 14.2535C19.8064 14.2867 17.2852 15.8281 12.401 18.8775C11.6854 19.332 11.0372 19.5534 10.4564 19.5418C9.81619 19.529 8.58461 19.207 7.66906 18.9317C6.5461 18.5941 6.13158 18.4351 6.20929 17.8617C6.24977 17.5631 6.53511 17.2511 7.0653 16.9259Z"
+              fill="white"></path>
+          </svg>
+          <h2 class="container__quiz__telegram_h2"><svg width="88" height="21" viewBox="0 0 88 21" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.39978 16V3.438H0.175781V1.172H11.3738V3.438H7.10578V16H4.39978ZM20.4938 11.402H13.3218C13.3878 13.338 14.8838 14.174 16.6218 14.174C17.8758 14.174 18.7558 13.976 19.5918 13.69L19.9878 15.538C19.0638 15.934 17.7878 16.22 16.2478 16.22C12.7718 16.22 10.7258 14.086 10.7258 10.808C10.7258 7.83801 12.5298 5.044 15.9618 5.044C19.4378 5.044 20.5818 7.904 20.5818 10.258C20.5818 10.764 20.5378 11.16 20.4938 11.402ZM13.3218 9.51H18.0298C18.0518 8.52001 17.6118 6.892 15.8078 6.892C14.1358 6.892 13.4318 8.41 13.3218 9.51ZM22.8598 16V0.380005H25.5658V16H22.8598ZM37.6998 11.402H30.5278C30.5938 13.338 32.0898 14.174 33.8278 14.174C35.0818 14.174 35.9618 13.976 36.7978 13.69L37.1938 15.538C36.2698 15.934 34.9938 16.22 33.4538 16.22C29.9778 16.22 27.9318 14.086 27.9318 10.808C27.9318 7.83801 29.7358 5.044 33.1678 5.044C36.6438 5.044 37.7878 7.904 37.7878 10.258C37.7878 10.764 37.7438 11.16 37.6998 11.402ZM30.5278 9.51H35.2358C35.2578 8.52001 34.8178 6.892 33.0138 6.892C31.3418 6.892 30.6378 8.41 30.5278 9.51ZM49.7678 8.366V14.438C49.7678 16.682 49.3058 18.288 48.1838 19.3C47.0838 20.29 45.5218 20.598 44.0478 20.598C42.6838 20.598 41.2318 20.29 40.3078 19.74L40.9018 17.694C41.5838 18.09 42.7278 18.508 44.0258 18.508C45.7858 18.508 47.1058 17.584 47.1058 15.274V14.35H47.0618C46.4458 15.296 45.3678 15.934 43.9378 15.934C41.2758 15.934 39.3838 13.734 39.3838 10.698C39.3838 7.178 41.6718 5.044 44.2458 5.044C45.8958 5.044 46.8418 5.836 47.3478 6.716H47.3918L47.5018 5.28601H49.8558C49.8118 6.012 49.7678 6.892 49.7678 8.366ZM47.0618 11.314V9.576C47.0618 9.31201 47.0398 9.07001 46.9738 8.85001C46.6878 7.86001 45.9178 7.11201 44.7738 7.11201C43.2558 7.11201 42.1338 8.432 42.1338 10.61C42.1338 12.436 43.0578 13.91 44.7518 13.91C45.7638 13.91 46.6438 13.25 46.9518 12.26C47.0398 11.996 47.0618 11.622 47.0618 11.314ZM52.6838 16V8.74C52.6838 7.288 52.6618 6.23201 52.5958 5.28601H54.9278L55.0378 7.31001H55.1038C55.6318 5.814 56.8858 5.044 58.0518 5.044C58.3158 5.044 58.4698 5.066 58.6898 5.11V7.64001C58.4478 7.596 58.2058 7.57401 57.8758 7.57401C56.5998 7.57401 55.6978 8.38801 55.4558 9.62001C55.4118 9.86201 55.3898 10.148 55.3898 10.434V16H52.6838ZM68.7338 9.576V13.426C68.7338 14.394 68.7778 15.34 68.9098 16H66.4678L66.2698 14.812H66.2038C65.5658 15.648 64.4438 16.242 63.0358 16.242C60.8798 16.242 59.6698 14.68 59.6698 13.052C59.6698 10.368 62.0678 8.982 66.0278 9.004V8.828C66.0278 8.124 65.7418 6.958 63.8498 6.958C62.7938 6.958 61.6938 7.288 60.9678 7.75L60.4398 5.99C61.2318 5.506 62.6178 5.044 64.3118 5.044C67.7438 5.044 68.7338 7.222 68.7338 9.576ZM66.0938 12.238V10.764C64.1798 10.742 62.3538 11.138 62.3538 12.766C62.3538 13.822 63.0358 14.306 63.8938 14.306C64.9938 14.306 65.7638 13.602 66.0278 12.832C66.0938 12.634 66.0938 12.436 66.0938 12.238ZM71.6938 16V8.476C71.6938 7.244 71.6498 6.21 71.6058 5.28601H73.9158L74.0478 6.87H74.1138C74.6198 6.034 75.5878 5.044 77.4138 5.044C78.8218 5.044 79.9218 5.83601 80.3838 7.024H80.4278C80.8018 6.43001 81.2418 5.99001 81.7258 5.682C82.3418 5.264 83.0238 5.044 83.9258 5.044C85.6858 5.044 87.4898 6.25401 87.4898 9.68601V16H84.8498V10.082C84.8498 8.30001 84.2338 7.24401 82.9358 7.24401C82.0118 7.24401 81.3298 7.904 81.0438 8.674C80.9558 8.916 80.9118 9.26801 80.9118 9.576V16H78.2718V9.796C78.2718 8.3 77.6778 7.24401 76.4238 7.24401C75.4118 7.24401 74.7298 8.036 74.4658 8.762C74.3778 9.048 74.3338 9.356 74.3338 9.664V16H71.6938Z"
+                fill="#363B40"></path>
+            </svg></h2>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .hidden-radio {
+      display: none;
+    }
+
+    .circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid gray;
+      margin-right: 10px;
+    }
+
+    .container__quiz__option:hover .circle {
+      background-color: gray;
+    }
+
+    .container__quiz__option:hover .circle.selected {
+      background-color: #20A73E;
+    }
+
+    .circle.selected {
+      background-color: #20A73E;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <script>
+    let currentQuestion = 1;
+    let selectedOption = 0;
+    const quizResults = [];
+
+
+
+    function selectOption(option, questionNumber) {
+      selectedOption = option;
+      const circles = document.querySelectorAll(`#question${questionNumber} .circle`);
+      circles.forEach(circle => {
+        circle.classList.remove('selected');
+      });
+      document.getElementById(`option${option}`).nextElementSibling.classList.add('selected');
+      document.getElementById(`submitBtn${questionNumber}`).removeAttribute('disabled');
+      document.getElementById(`submitBtn${questionNumber}`).classList.remove('disabled');
+    }
+
+    function submitQuiz(questionNumber) {
+      quizResults.push(selectedOption);
+      if (currentQuestion < 4) {
+        document.getElementById(`question${questionNumber}`).classList.add('hidden');
+        currentQuestion++;
+        document.getElementById(`question${currentQuestion}`).classList.remove('hidden');
+        document.getElementById(`submitBtn${currentQuestion}`).setAttribute('disabled', 'disabled');
+        document.querySelectorAll(`#question${currentQuestion} .hidden-radio`).forEach(input => {
+          input.disabled = false;
+        });
+        document.querySelectorAll(`#question${currentQuestion} .circle`).forEach(circle => {
+          circle.classList.remove('selected');
+        });
+        updateProgress();
+      } else {
+        displayResults();
+      }
+    }
+
+    function displayResults() {
+      document.getElementById(`question4`).classList.add('hidden');
+      document.getElementById(`submitBtn4`).classList.add('hidden');
+      const finalizeButton = document.getElementById('result');
+      finalizeButton.classList.remove('hidden');
+      
+    }
+
+   
+
+    function updateProgress() {
+      const progress = (currentQuestion / 4) * 100;
+      document.querySelector('.progress__inner').style.width = `${progress}%`;
+    }
+  </script>
+
+
+</body>
+
+</html>
